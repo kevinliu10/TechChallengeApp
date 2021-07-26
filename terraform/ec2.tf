@@ -19,11 +19,11 @@ data "aws_ami" "amazon-linux-2" {
 }
 
 resource "aws_launch_configuration" "launch-configuration" {
-  name_prefix   = "techchallengeapp-launch-configuration"
-  image_id      = data.aws_ami.amazon-linux-2.id
-  instance_type = "t2.micro"
-  user_data     = filebase64("install.sh")
-  security_groups  = [aws_security_group.app-security-group.id]
+    name_prefix   = "techchallengeapp-launch-configuration"
+    image_id      = data.aws_ami.amazon-linux-2.id
+    instance_type = "t2.micro"
+    user_data     = filebase64("install.sh")
+    security_groups  = [aws_security_group.app-security-group.id]
 
     root_block_device {
         volume_size = 20
@@ -40,10 +40,11 @@ resource "aws_autoscaling_group" "autoscaling-group" {
     vpc_zone_identifier  = [aws_subnet.app-subnet-az1.id, aws_subnet.app-subnet-az2.id, aws_subnet.app-subnet-az3.id]
     target_group_arns    = [aws_lb_target_group.target-group.arn]
 
-    max_size = 2
-    min_size = 1
+    max_size = 5
+    min_size = 2
 
     depends_on = [
-        aws_db_instance.rds
+        aws_db_instance.rds,
+        aws_route53_record.private-db-record
     ]
 }

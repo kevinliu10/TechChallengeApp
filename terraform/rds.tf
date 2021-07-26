@@ -14,6 +14,7 @@ resource "aws_db_instance" "rds" {
     vpc_security_group_ids    = [aws_security_group.rds-security-group.id]
     db_subnet_group_name      = aws_db_subnet_group.db-subnet-group.id
     parameter_group_name      = "default.postgres12"
+    # multi_az set to off as it increases dpeloyment time. Set to true for higher db availability.
     multi_az                  = false
     deletion_protection       = false
     skip_final_snapshot       = true
