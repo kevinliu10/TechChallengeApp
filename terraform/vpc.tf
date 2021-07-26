@@ -52,7 +52,7 @@ resource "aws_subnet" "app-subnet-az3" {
 
 resource "aws_subnet" "public-subnet-az1" {
     vpc_id                  = aws_vpc.vpc.id
-    cidr_block              = "10.10.21.0/24"
+    cidr_block              = "10.10.11.0/24"
     availability_zone       = "ap-southeast-2a"
     map_public_ip_on_launch = false
 
@@ -63,7 +63,7 @@ resource "aws_subnet" "public-subnet-az1" {
 
 resource "aws_subnet" "public-subnet-az2" {
     vpc_id                  = aws_vpc.vpc.id
-    cidr_block              = "10.10.22.0/24"
+    cidr_block              = "10.10.12.0/24"
     availability_zone       = "ap-southeast-2b"
     map_public_ip_on_launch = false
 
@@ -74,7 +74,7 @@ resource "aws_subnet" "public-subnet-az2" {
 
 resource "aws_subnet" "public-subnet-az3" {
     vpc_id                  = aws_vpc.vpc.id
-    cidr_block              = "10.10.23.0/24"
+    cidr_block              = "10.10.13.0/24"
     availability_zone       = "ap-southeast-2c"
     map_public_ip_on_launch = false
 
@@ -104,7 +104,7 @@ resource "aws_eip" "nat-eip" {
 
 resource "aws_nat_gateway" "nat-gateway" {
     allocation_id = aws_eip.nat-eip.id
-    subnet_id = aws_subnet.app-subnet-az1.id
+    subnet_id = aws_subnet.public-subnet-az1.id
 
     tags = {
         Name = "techchallengeapp-nat-gateway"
