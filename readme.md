@@ -48,6 +48,7 @@ Additional scaling policies can be applied to the auto scaling group depending o
 
 ## Deployment steps
 
-Move to the `/terraform` dirctory of the repo\
-Run `terraform init` then `terraform apply`\
+1. Move to the `/terraform` dirctory of the repo
+2. Run `terraform init` then `terraform apply`
+
 Around 5 minutes after the terraform build is done, the app should be accessible via the load balancer (techchallenge-alb-XXXX.ap-southeast-2.elb.amazonaws.com)
