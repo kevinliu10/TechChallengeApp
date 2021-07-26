@@ -35,9 +35,11 @@ If you've found an issue with the application, the documentation, or anything el
 ## High level overview of deployment
 
 The deployment will create 2 types of subnets across all 3 availability zones for the ap-southeast-2 region in AWS. 
-3 public subnets for the load balancer and internet access for the nat gateway.
-3 private subnets to run the virtual machines and postgres database.
+
+3 public subnets for the load balancer and internet access for the nat gateway and 3 private subnets to run the virtual machines and postgres database.
+
 The virtual machines are scaled in using an auto scale group and the [install.sh](terraform/install.sh) script runs the initial setup of the server.
+
 Multi-az can be switched on for the postgres database to increase availability. Currently switched off for quicker deployment.
 Additional scaling policies can be applied to the auto scaling group depending on usage.
 
