@@ -25,7 +25,7 @@ resource "aws_lb_target_group" "target-group" {
     vpc_id = aws_vpc.vpc.id
     health_check {
         enabled = true
-        interval = 30
+        interval = 10
         path = "/healthcheck/"
         protocol = "HTTP"
     }

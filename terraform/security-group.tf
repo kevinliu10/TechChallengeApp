@@ -20,9 +20,6 @@ resource "aws_security_group" "app-security-group" {
 
     lifecycle {
         create_before_destroy = true
-        ignore_changes = [
-            ingress
-        ]
     }
 }
 
